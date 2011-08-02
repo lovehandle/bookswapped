@@ -10,11 +10,14 @@ gem 'modernizr-rails'
 gem 'muffins'
 gem 'rails', '3.1.0.rc5'
 gem 'sass-rails', "~> 3.1.0.rc"
-gem 'sqlite3'
 gem 'sucker', '2.1.0'
 gem 'truncate_html'
 gem 'uglifier'
 gem 'unicorn'
+
+group :production do
+  gem 'pg'
+end
 
 group :development do
   gem 'rails3-generators'
