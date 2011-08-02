@@ -1,0 +1,23 @@
+%table
+
+  %thead
+    %th.hide
+    %th Vendor
+    %th Condition
+    %th Price
+    %th Ship Rate
+    %th Total Cost
+    %th{:width => '125'} &hearts;
+
+  %tbody
+    - @offers.each do |offer|
+      %tr.offer
+        %td.hide= link_to('Select', offer.link)
+        %td= offer.vendor
+        %td= offer.condition
+        %td= offer.price
+        %td= offer.ship_rate
+        %td= offer.total_price
+        %td 
+          %h3.arrow.hide &larr; Select This Offer
+

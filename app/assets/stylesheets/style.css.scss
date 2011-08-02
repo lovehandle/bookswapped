@@ -1,0 +1,118 @@
+$headerFont: 'Nixie One';
+$subHeaderFont: 'Dawning of a New Day';
+$bodyFont: 'Open Sans';
+
+body {
+  font: 16px $bodyFont;
+}
+
+header #logo {
+  text-transform: uppercase;
+}
+
+header#menu {
+}
+
+header#header {
+  min-height: 50px;
+  border-bottom: 1px solid #DDD;
+
+  h1 {
+    padding:0;
+    margin: 0;
+  }
+}
+
+h1, h4 {
+  font-family: $headerFont;
+}
+
+h2, h3 {
+  font-family: $subHeaderFont;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  padding:10px 0;
+  margin:10px 0;
+}
+
+ul {
+  list-style: none;
+}
+
+input {
+  border-bottom: 1px dashed #000;
+}
+
+a {
+  text-decoration: none;
+  &:hover {
+    color: #000;
+    background: #FFF;
+    border-bottom: 1px dashed #000;
+  }
+  &:visited {
+    color: #000;
+  }
+}
+
+/* Main styles */
+
+#container {
+  padding-top: 20px;
+}
+
+#main {
+  margin: 20px 0;
+}
+
+/* Menu styles */
+nav {
+  ul {
+    padding-top: .5em;
+
+    li {
+      display:inline;
+      padding-right: .5em;
+      font: bold 1.75em $headerFont;
+    }
+  }
+}
+
+.search {
+  overflow:auto;
+
+  h2 {
+    padding:0;
+    margin: 0;
+  }
+
+  span {
+    input {
+      font: 1.25em $headerFont;
+    }
+    padding:5px 0 0 10px;
+    margin: 0;
+  }
+}
+
+
+.left {
+  float: left;
+}
+
+.right {
+  float:right;
+}
+
+.center {
+  text-align: center;
+}
+
+.hide {
+  display:none;
+}
+
+.prepend_top {
+  margin-top: 20px;
+}

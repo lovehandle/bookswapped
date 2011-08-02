@@ -1,0 +1,33 @@
+- content_for :title, 'Textbook Price Comparison'
+
+#step_1.step
+  = form_tag(search_books_path, :remote => true, :method => :get, :id => 'book_search_form') do
+    
+    - @book_search ||= {}
+
+    %h2 1.) You search for a book:
+    = text_field_tag('book_search[keywords]', @book_search[:keywords], :placeholder => 'type here to search', :size => 20, :class => 'hide')
+
+  .loading.hide
+    %h2
+      = image_tag('loading.gif', :width => 20, :style => 'padding-bottom:15px;')
+      Give it a sec...
+
+  #books
+
+#step_2.step.hide
+  %h2 2.) Our team of robots will search all the major online book vendors to find the lowest price available for your book.
+  %h3{:style => 'font-family:"Nixie One"'}
+    In the meanwhile, would you mind telling us how much you were going to pay?
+  %h3{:style => 'font-family:"Nixie One"'}
+    MSRP says: $
+    = text_field_tag('msrp', '45.00', :size => 5)
+    = link_to 'No, thanks', '#'
+  .loading
+    %h2
+      = image_tag('loading.gif', :width => 20, :style => 'padding-bottom:15px;')
+      Comparing prices...
+  #offers.hide
+
+#step_3.step.hide
+  %h2 3.) You select which offer suits you best:

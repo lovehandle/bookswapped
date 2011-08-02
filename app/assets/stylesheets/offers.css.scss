@@ -1,0 +1,19 @@
+#offers {
+  table {
+    border-top: 1px dashed #DDD;
+    border-bottom: 1px dashed #DDD;
+    width: 100%;
+
+    th {
+      border-bottom: 1px dashed #DDD;
+      padding: 3px 0px;
+    }
+
+    td {
+      cursor:pointer;
+      border-bottom: 1px dashed #EEE;
+      text-align: center;
+      height: 80px;
+    }
+  }
+}

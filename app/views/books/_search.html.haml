@@ -1,0 +1,23 @@
+- if @books.empty?
+  - unless @book_search == {}
+    %h2 
+      &hearts; Whoops... just can't seem to find what you are looking for. Why don't you try our
+    = link_to 'Jedi Search', advanced_search_path
+    ?
+- else
+  - @books.each do |book|
+    .book{:class => "#{cycle('odd', 'even')}", :title => "Select #{book.title}"}
+      .selected.grid_2.hide
+        %h2 You selected:
+      .hover.suffix_1
+        %h3.arrow.hide &rarr;
+      .image.grid_3.suffix_1
+        = book_image(book)
+      .information.grid_10
+        %h4= book.title
+        %span by: Tolstoy (#{book.publisher})
+        %br/
+        %span Published: #{book.publication_date}
+        %br/
+        %span Binding: #{book.cover}
+      = form_tag(offers_book_path(:id => book.ean), :method => :get, :remote => true)

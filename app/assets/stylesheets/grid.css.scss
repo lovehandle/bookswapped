@@ -1,0 +1,111 @@
+$numCols: 24;
+$columnWidth: 30px;
+$gutterWidth: 10px;
+
+$totalWidth: $numCols * ($columnWidth +$gutterWidth);
+
+body {
+  min-width: $totalWidth;
+}
+
+.container_#{$numCols} {
+  margin-left: auto;
+  margin-right: auto;
+  width: $totalWidth;
+}
+
+.grid_1, .grid_2, .grid_3,
+.grid_4, .grid_5, .grid_6,
+.grid_7, .grid_8, .grid_9,
+.grid_10, .grid_11, .grid_12,
+.grid_13, .grid_14, .grid_15,
+.grid_16, .grid_17, .grid_18,
+.grid_19, .grid_20, .grid_21,
+.grid_22, .grid_23, .grid_24 {
+  display: inline;
+  float: left;
+  position: relative;
+  margin {
+    left:  ($gutterWidth / 2);
+    right: ($gutterWidth / 2);
+  }
+}
+
+.push_1, .push_2, .push_3,
+.push_4, .push_5, .push_6,
+.push_7, .push_8, .push_9,
+.push_10, .push_11, .push_12,
+.push_13, .push_14, .push_15,
+.push_16, .push_17, .push_18,
+.push_19, .push_20, .push_21,
+.push_22, .push_23, .push_24,
+
+.pull_1, .pull_2, .pull_3,
+.pull_4, .pull_5, .pull_6,
+.pull_7, .pull_8, .pull_9,
+.pull_10, .pull_11, .pull_12,
+.pull_13, .pull_14, .pull_15,
+.pull_16, .pull_17, .pull_18,
+.pull_19, .pull_20, .pull_21,
+.pull_22, .pull_23, .pull_24 {
+  position: relative;
+}
+
+.alpha {
+  margin-left: 0;
+}
+
+.omega {
+  margin-right: 0;
+}
+
+.container_#{$numCols} {
+  $value: $columnWidth;
+  @for $i from 1 to ($numCols + 1) {
+    .grid_#{$i} {
+      width: $value;
+    }
+    $value: $value + ($columnWidth + $gutterWidth);
+  }
+}
+
+.container_#{$numCols} {
+  $value: ($columnWidth + $gutterWidth);
+  @for $i from 1 to $numCols {
+    .prefix_#{$i} {
+      padding-left: $value;
+    }
+    .suffix_#{$i} {
+      padding-right: $value;
+    }
+    .push_#{$i} {
+      left: $value;
+    }
+    .pull_#{$i} {
+      right: $value;
+    }
+    $value: $value + ($columnWidth + $gutterWidth);
+  }
+}
+
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+.clearfix {
+  zoom: 1;
+
+  &:before, &:after {
+    content: '\0020';
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
+}

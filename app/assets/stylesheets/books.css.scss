@@ -1,0 +1,32 @@
+// Place all the styles related to the books controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#books {
+
+  .active {
+    border-top: 1px dashed #DDD;
+  }
+
+  .book {
+
+    h4 {
+      padding-top:0;
+      margin-top:0;
+    }
+
+    .hover {
+      width: 15px;
+      float:left;
+      margin-top: 45px;
+      padding-left:10px;
+    }
+
+    border-bottom: 1px dashed #DDD;
+    cursor: pointer;
+    clear:both;
+    min-height: 175px;
+    padding: 1.25em 2em;
+    color: #000;
+  }
+}
