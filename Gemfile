@@ -15,7 +15,7 @@ gem 'truncate_html'
 gem 'uglifier'
 gem 'unicorn'
 
-gem :production
+group :production do
   gem 'mysql2'
 end
 
