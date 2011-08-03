@@ -49,16 +49,14 @@ module Amazon
 
     class << self
       def all(query)
-        ean = query[:ean]
+        asin = query[:asin]
  
         parameters = {
-          :id_type => 'EAN',
-          :response_group => 'OfferFull',
+          :id_type => 'ASIN',
+          :response_group => 'OfferListings',
           :merchant_id => 'All',
-          :condition => 'All',
-          :delivery_method => 'Ship',
-          :search_index => 'Books'
-        }.merge(:item_id => ean)
+          :condition => 'All'
+        }.merge(:item_id => asin)
  
         request  = Amazon::Gateway.item_lookup(parameters)
         response = request.get

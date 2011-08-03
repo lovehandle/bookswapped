@@ -1,6 +1,1 @@
-$(function() {
-$("#offers").html("#{escape_javascript(render :partial => 'offers')}");
-$("#step_2 .loading").hide();
-$("#offer_summary").show();
-$("#step_3").show();
-});
+= render :partial => 'offers'

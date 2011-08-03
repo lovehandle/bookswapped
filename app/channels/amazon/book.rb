@@ -27,7 +27,11 @@ module Amazon
 
     class << self
 
-      def all(parameters)
+      def all(params)
+        parameters = {
+          :power => 'not binding:kindle'
+        }.merge(params)
+
         request  = Amazon::Gateway.item_search(parameters)
         response = request.get
         response.books

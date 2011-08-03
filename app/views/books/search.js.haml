@@ -1,4 +1,5 @@
 $(function() {
 $("#step_1 .loading").hide();
 $("#books").html("#{escape_javascript(render :partial => 'search')}");
+$(window).load(function(){replaceNullImages()});
 });

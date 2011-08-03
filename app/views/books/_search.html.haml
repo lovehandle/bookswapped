@@ -20,4 +20,5 @@
         %span Published: #{book.publication_date}
         %br/
         %span Binding: #{book.cover}
-      = form_tag(offers_book_path(:id => book.ean), :method => :get, :remote => true)
+        = hidden_field_tag(:ean, book.ean)
+      

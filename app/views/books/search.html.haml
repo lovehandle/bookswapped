@@ -11,9 +11,9 @@
         = text_field_tag('book_search[keywords]', @book_search[:keywords], :placeholder => 'type here to search', :size => 25, :class => 'hide')
         \.
 
-  .loading.hide
+  #step_1_loading.loading.hide
     %h2
-      = image_tag('loading.gif', :width => 20, :style => 'padding-bottom:15px;')
+      = image_tag('loading.gif', :width => 20)
       Give it a sec...
 
   #books
@@ -22,16 +22,14 @@
 #step_2.step.hide
   %h2 2.) We compare the prices of every major online book vendor
 
-  .loading.hide
+  #step_2_loading.loading.hide
     %h2
-      = image_tag('loading.gif', :width => 20, :style => 'padding-bottom:15px;')
+      = image_tag('loading.gif', :width => 20)
       Comparing prices...
 
-  %h2#offer_summary.prefix_1.hide &rarr; Finished!
+  %h2#completed.prefix_1.hide &rarr; Finished!
 
 #step_3.step.hide
   %h2 3.) You select an offer:
 
   #offers
-
-#step_4
