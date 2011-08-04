@@ -14,4 +14,7 @@ module BooksHelper
     image_tag(image.url, :class => "book_image #{options[:size]}", :alt => "#{book.title} Cover")
   end
 
+  def book_author(book)
+    [book.authors].flatten.to_sentence
+  end
 end

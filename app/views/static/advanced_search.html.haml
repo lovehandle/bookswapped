@@ -1,0 +1,24 @@
+%h1 Advanced Search:
+.advanced_search.prefix_1
+  = form_for(:book_search, :url => search_books_path, :method => :get, :html => {:id => 'advanced_search'}) do |f|
+    %table
+      %tr
+        %td 
+          %h2 Keywords:
+        %td= f.text_field :keywords
+      %tr
+        %td 
+          %h2 Title:
+        %td= f.text_field :title
+      %tr
+        %td 
+          %h2 Author:
+        %td= f.text_field :author
+      %tr
+        %td 
+          %h2 Publisher:
+        %td= f.text_field :publisher
+
+      %tr
+        %td{:colspan => 2}
+          %h1.right= link_to_function 'Go.', %($('#advanced_search').submit())

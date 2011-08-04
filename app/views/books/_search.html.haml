@@ -2,8 +2,8 @@
   - unless @book_search == {}
     %h2 
       &hearts; Whoops... just can't seem to find what you are looking for. Why don't you try our
-    = link_to 'Jedi Search', advanced_search_path
-    ?
+      = link_to 'Advanced Search', advanced_search_path
+      ?
 - else
   - @books.each do |book|
     .book{:class => "#{cycle('odd', 'even')}", :title => "Select #{book.title}"}
@@ -15,7 +15,7 @@
         = book_image(book, :size => :medium)
       .information.grid_10
         %h4= book.title
-        %span by: Tolstoy (#{book.publisher})
+        %span by: #{book_author(book)} (#{book.publisher})
         %br/
         %span Published: #{book.publication_date}
         %br/
