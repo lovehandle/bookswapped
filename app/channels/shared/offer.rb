@@ -7,7 +7,7 @@ module Shared
     def availability
       'Ships in 1-2 Business Days'
     end
-    
+
     def condition
       'Used'
     end

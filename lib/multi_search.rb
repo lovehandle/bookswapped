@@ -1,7 +1,7 @@
 module MultiSearch
   class Offer
 
-    CHANNELS = [Amazon::Offer, Ebay::Offer, Half::Offer]
+    CHANNELS = [Amazon::Offer, Abebooks::Offer, Ebay::Offer, Half::Offer]
 
     class << self
 

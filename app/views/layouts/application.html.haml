@@ -11,9 +11,15 @@
 %head
   %meta{'charset' => 'utf-8'}
   %meta{'http-equiv' => 'X-UA-Compatible', 'content' => 'IE=edge,chrome=1'}
-  %title Bookswapped.com - #{yield :title}
-  %meta{'name' => 'description', 'content' => 'Textbook price comparison website'}
+  %title Bookswapped.com - A Book Price Comparison Website
+  %meta{'name' => 'description', 'content' => 'A textbook price comparison website.'}
   %meta{'name' => 'author', 'content' => 'Ryan Closner'}
+
+  %meta{'property' => 'og:title', 'content' => 'SPUBooks.com - A textbook/book price comparison website.'}
+  %meta{'property' => 'og:description', 'content' => 'A textbook/book price comparison website written by an SPU student, for SPU students.'}
+  %meta{'property' => 'og:image', 'content' => 'http://ecx.images-amazon.com/images/P/0547167024.01._SCMZZZZZZZ_.jpg'}
+  %meta{'property' => 'og:type', 'content' => 'book'}
+  %meta{'property' => 'og:url', 'content' => 'http://spubooks.com'}
 
   = csrf_meta_tag
 
