@@ -1,6 +1,8 @@
 module Abebooks
   class Offer < Shared::Offer
 
+    CART_URI = "http://www.abebooks.com/servlet/SearchResults?"
+
     include Muffins
 
     base_path 'table.result'
@@ -25,7 +27,12 @@ module Abebooks
 
         request  = Abebooks::Gateway.item_lookup(parameters)
         response = request.get
-        response.offers
+
+        # FUCKING DIRTY
+        offers = response.offers
+        offers.map {|o| o.link = CART_URI + "isbn=#{params[:ean]}"}
+
+        offers
       end
     end
   end

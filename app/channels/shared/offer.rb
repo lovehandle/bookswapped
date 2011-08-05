@@ -1,7 +1,7 @@
 module Shared
   class Offer
 
-    attr_accessor :merchant_name, :comments, :average_merchant_feedback
+    attr_accessor :merchant_name, :comments, :average_merchant_feedback, :link
     attr_writer :price, :ship_rate, :condition, :availability
 
     def availability
