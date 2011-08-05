@@ -17,7 +17,7 @@ module MultiSearch
           end
         end.flatten
 
-        offers.sort_by(&:total_price)
+        offers.sort_by(&:total_price)[0..14]
       end
 
     end
