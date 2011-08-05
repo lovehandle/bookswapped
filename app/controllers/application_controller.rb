@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
 
       @offers = MultiSearch::Offer.all(parameters)
 
-      Rails.cache.write("#{@book.ean}_offers", @offers)
+      Rails.cache.write("#{@book.ean}_offers", @offers, :expires_in => 1.hour)
     end
 
     @offers
