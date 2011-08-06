@@ -22,7 +22,6 @@ class BooksController < ApplicationController
     find_offers
 
     respond_to do |format|
-      format.js
       format.json do
         @offers = @offers[0..14]
 
