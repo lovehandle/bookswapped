@@ -1,6 +1,6 @@
 %h2 Bookswapped.com is a textbook price-comparison engine designed to make buying textbooks simpler. Oh, did I mention it's less expensive? Well, it is.
 
-%h2 Here's how it works: 
+%h2 Here's how it works:
 
 #step_1.step
   = form_tag(search_books_path, :remote => true, :method => :get, :id => 'book_search_form') do
@@ -33,3 +33,23 @@
   %h2 3.) You select an offer:
 
   #offers
+    %table#offers_table
+      %thead
+        %th Vendor
+        %th Condition
+        %th Price
+        %th Ship Rate
+        %th Total Cost
+        %th{:width => '125'} &hearts;
+      %tbody
+
+%script{:id => 'offerRowTemplate', :type => 'text/x-jQuery-tmpl'}
+  %tr.offer
+    %td ${vendor}
+    %td ${condition}
+    %td ${price}
+    %td ${ship_rate}
+    %td ${total_price}
+    %td.arrow.hide
+      %h3
+        %a{:href => '${link}'} &rarr; Select This Offer

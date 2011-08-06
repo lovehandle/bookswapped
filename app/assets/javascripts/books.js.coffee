@@ -6,7 +6,7 @@ $(window).bind "popstate", () -> $.getScript(location.href)
 
 @scrollTo = (id) -> $('html,body').animate({scrollTop: $(id).offset().top }, 'slow')
 
-@replaceNullImages = () -> $("img.book_image").each () -> 
+@replaceNullImages = () -> $("img.book_image").each () ->
   if this.height == this.width
     $(this).addClass 'no_image'
     $(this).attr 'src', '/assets/no_image.jpeg'
@@ -25,23 +25,27 @@ revertTo = (step) ->
 
 showStep = (step) ->
   $("#step_" + step).show "slide"
-  $("#step_" + step + " .loading").show()
+  showLoading(step)
 
-getOffers = (ean) -> $("#offers").load("/books/" + ean + "/offers", () -> toStep3())
+showLoading = (step) -> $("#step_" + step + " .loading").show()
+hideLoading = (step) -> $("#step_" + step + " .loading").hide()
 
 selectBook = (book) ->
   $(book).find(".selected").show()
   $(book).addClass("active")
-  hideInactiveBooks()  
+  hideInactiveBooks()
 
+getOffers = (book) ->
   ean = $(book).find("#ean").val()
-  getOffers(ean)
-
+  url = "/books/" + ean + "/offers.json"
+  $.get(url, (offers) ->
+    $("#offers_table tbody").append $("#offerRowTemplate").tmpl(offers)
+    scrollTo("#step_3"))
 
 hideInactiveBooks = () -> $("#books .book").not(".active").hide('blind').remove()
 
 clearBooks  = () -> $("#books").html  ""
-clearOffers = () -> $("#offers").html ""
+clearOffers = () -> $("#offers_table tbody").html ""
 
 # Step 1: When the book search form is submitted
 $ -> $("#book_search_form").submit () ->
@@ -59,9 +63,9 @@ $ -> $("#book_search_form").submit () ->
 
 # Step 1: User hovers over a book
 $ -> $("#books > .book:not(.active)").live({
-  mouseenter: () -> 
+  mouseenter: () ->
     $(this).find(".arrow").show()
-  mouseleave: () -> 
+  mouseleave: () ->
     $(this).find(".arrow").hide()
   })
 
@@ -77,26 +81,30 @@ $ -> $("#books > .book:not(.active)").live 'click', () ->
 
   # Clear offers
   clearOffers()
-  
+
   # Show loading
   showStep(2)
 
-# Step 2: Comparing prices
-@toStep3 = () ->
-  $("#step_2_loading").hide()
+  # Get offers
+  getOffers(this)
+
+  # Hide loading
+  hideLoading(2)
+
   $("#step_2 #completed").show()
+
+  # Show offers
   showStep(3)
-  scrollTo("#step_3")
 
 # Step 3: User hovers over a book offer
 $ -> $("#offers tr").live({
-  mouseenter: () -> 
+  mouseenter: () ->
     $(this).find(".arrow").show()
-  mouseleave: () -> 
+  mouseleave: () ->
     $(this).find(".arrow").hide()
   })
 
 # Step 3: User selects a book offer
-$ -> $("#offers tbody tr").live 'click', () -> 
+$ -> $("#offers tbody tr").live 'click', () ->
   link = $(this).find("a")
   window.open(link.attr('href'), '_newtab')
