@@ -23,6 +23,22 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       format.js
+      format.json do
+        @offers = @offers[0..14]
+
+        @offers.map! do |offer|
+          {
+            :vendor      => offer.vendor,
+            :condition   => offer.condition,
+            :price       => offer.price,
+            :ship_rate   => offer.ship_rate,
+            :total_price => offer.total_price,
+            :link        => offer.link
+          }
+        end
+
+        render json: @offers
+      end
     end
   end
 
