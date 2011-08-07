@@ -40,6 +40,17 @@ getOffers = (book) ->
   url = "/books/" + ean + "/offers.json"
   $.get(url, (offers) ->
     $("#offers_table tbody").append $("#offerRowTemplate").tmpl(offers)
+    
+    # Hide loading
+    hideLoading(2)
+
+    # Show Step 2 completion notice
+    $("#step_2 #completed").show()  
+
+    # Show step 3
+    showStep(3)  
+
+    # Scroll to step 3
     scrollTo("#step_3"))
 
 hideInactiveBooks = () -> $("#books .book").not(".active").hide('blind').remove()
@@ -88,13 +99,6 @@ $ -> $("#books > .book:not(.active)").live 'click', () ->
   # Get offers
   getOffers(this)
 
-  # Show offers
-  showStep(3)
-
-  # Hide loading
-  hideLoading(2)
-
-  $("#step_2 #completed").show()
 
 # Step 3: User hovers over a book offer
 $ -> $("#offers tr").live({
