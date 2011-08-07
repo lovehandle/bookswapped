@@ -88,13 +88,13 @@ $ -> $("#books > .book:not(.active)").live 'click', () ->
   # Get offers
   getOffers(this)
 
+  # Show offers
+  showStep(3)
+
   # Hide loading
   hideLoading(2)
 
   $("#step_2 #completed").show()
-
-  # Show offers
-  showStep(3)
 
 # Step 3: User hovers over a book offer
 $ -> $("#offers tr").live({
