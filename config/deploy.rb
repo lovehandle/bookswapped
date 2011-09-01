@@ -9,7 +9,7 @@ role :db,  "spubooks.com", :primary => true
 ssh_options[:forward_agent] = true
 default_run_options[:shell] = false
 
-set :deploy_to, "/home/deploy/bookswapped"
+set :deploy_to, "/home/deploy/Projects/bookswapped"
 set :deploy_via, :remote_cache
 set :user, "deploy"
 set :use_sudo, false
